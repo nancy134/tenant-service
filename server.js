@@ -17,11 +17,16 @@ const sequelize = new Sequelize(process.env.DATABASE_URL);
 const Tenant = TenantModel(sequelize, Sequelize);
 
 app.get('/', (req, res) => {
-    res.send('tenant-api.phowma.com');
+    res.send('tenant-service');
 });
 
 app.get('/tenants', (req, res) => {
-  Tenant.findAll().then(tenants => res.json(tenants))
+  console.log("/tenants");
+  Tenant.findAll().then(tenants => {
+      res.json(tenants);
+  }).catch(err => {
+      res.json(err);
+  });
 });
 
 app.get('/tenant', (req, res) => {
