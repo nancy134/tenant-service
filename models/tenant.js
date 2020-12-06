@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('tenant', {
+    const tenant = sequelize.define('tenant', {
         id: {
             type: type.INTEGER,
             primaryKey: true,
@@ -8,5 +8,6 @@ module.exports = (sequelize, type) => {
         name: type.STRING,
         cognito_pool_id: type.STRING,
         cognito_client_id: type.STRING
-    });
+    }, {});
+    return tenant;
 }
