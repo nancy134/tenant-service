@@ -46,7 +46,9 @@ app.post('/tenant', (req, res) => {
         res.json(err);
     });
 });
-if (!module.parent){
+console.log("process.env.NODE_ENV: "+process.env.NODE_ENV);
+/* istanbul ignore if */
+if (process.env.NODE_ENV !== "test"){
     app.listen(PORT, HOST);
 }
 

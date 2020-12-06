@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha ./test/* --exit",
+    "test": "NODE_ENV=test mocha ./test/* --exit",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "dependencies": {
