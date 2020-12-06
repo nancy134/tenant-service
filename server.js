@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/tenants', (req, res) => {
-  console.log("/tenants");
   models.tenant.findAll().then(tenants => {
       res.json(tenants);
   }).catch(err => {
@@ -31,10 +30,8 @@ app.get('/tenants', (req, res) => {
 
 app.get('/tenant', (req, res) => {
    models.tenant.findOne({where: {name: req.query.name}}).then(tenant => {
-       console.log("findOne returns success");
        res.json(tenant);
    }).catch(err => {
-       console.log("findOne returns error");
        res.json(err)
    });
 });
@@ -46,7 +43,7 @@ app.post('/tenant', (req, res) => {
         res.json(err);
     });
 });
-console.log("process.env.NODE_ENV: "+process.env.NODE_ENV);
+
 /* istanbul ignore if */
 if (process.env.NODE_ENV !== "test"){
     app.listen(PORT, HOST);
