@@ -44,6 +44,24 @@ app.post('/tenant', (req, res) => {
     });
 });
 
+app.put('/tenants/:id', (req, res) => {
+    models.tenant.update(
+        req.body,
+        {
+            returning: true,
+            where: {id: req.params.id}
+        }
+    ).then(function(update){
+        if (!update[0]){
+            res.json({message: "No records updated"});
+        } else {
+            res.json(update[1][0]);
+        }
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
 /* istanbul ignore if */
 if (process.env.NODE_ENV !== "test"){
     app.listen(PORT, HOST);
