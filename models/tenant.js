@@ -8,7 +8,8 @@ module.exports = (sequelize, type) => {
         name: type.STRING,
         cognito_pool_id: type.STRING,
         cognito_client_id: type.STRING,
-        constantContactClientId: type.STRING
+        constantContactClientId: type.STRING,
+        sparkClientId: type.STRING
     }, {});
     return tenant;
 }
